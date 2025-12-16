@@ -37,6 +37,4 @@ ctest --test-dir out/build/default
 
 - Multi Color (Optional)
 - Sounds
-- Web Support (WASM)
 - Add Game Over
-- GitHub Action auto release & deploy
