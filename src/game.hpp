@@ -49,7 +49,7 @@ class Game {
  public:
   Game(const Size &grid_size, const Input &input);
   int GetDistanceOnPlaced(const Grid &grid, const Shape &shape);
-  void EnrollShapeQueue();
+  void EnqueueShape();
   void FillGridContainerWithShape(const Shape &shape);
   void DrawPlaceholder(const Position placeholder_pos_grid, const Shape &shape,
                        const int cell_size_px, const Color outline_color);

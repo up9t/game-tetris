@@ -12,7 +12,6 @@ class Grid {
   // returns how many rows that are erased
   const int EraseCompletedRows();
   void EraseRow(const int row);
-  const void ShiftDownFloatingRows();
   void Draw(const int cell_size_px, const Color cell_color) const;
   int GetWidth() const;
   int GetHeight() const;

@@ -13,8 +13,9 @@ Grid::Grid(int width, int height)
 const int Grid::EraseCompletedRows() {
   int erased_rows = 0;
 
-  for (int i = this->grid_container.size() - 1; i >= 0; i--) {
+  for (int i = this->GetHeight() - 1; i >= 0; i--) {
     int block_count = 0;
+
     for (auto &&col : this->grid_container.at(i)) {
       if (!col) {
         break;
@@ -22,7 +23,7 @@ const int Grid::EraseCompletedRows() {
       block_count++;
     }
 
-    if (block_count == this->grid_container.at(i).size()) {
+    if (block_count == this->GetWidth()) {
       this->EraseRow(i);
       erased_rows++;
     }
@@ -34,24 +35,6 @@ const int Grid::EraseCompletedRows() {
 void Grid::EraseRow(const int row) {
   for (auto &&col : this->grid_container.at(row)) {
     col = 0;
-  }
-};
-
-const void Grid::ShiftDownFloatingRows() {
-  for (int col = 0; col < this->GetWidth(); col++) {
-    int offset = 0;
-
-    for (int row = this->GetHeight() - 1; row >= 1; row--) {
-      bool val = this->grid_container.at(row).at(col);
-
-      if (!val) {
-        offset++;
-        continue;
-      }
-
-      this->Set(col, row + offset, 1);
-      this->Set(col, row, 0);
-    }
   }
 };
 

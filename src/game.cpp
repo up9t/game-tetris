@@ -74,7 +74,7 @@ int Game::GetDistanceOnPlaced(const Grid &grid, const Shape &shape) {
   return least_distance;
 };
 
-void Game::EnrollShapeQueue() {
+void Game::EnqueueShape() {
   this->shape_queue[0] = std::move(this->shape_queue[1]);
   this->shape_queue[1] =
       shape_catalogs.at(GetRandomValue(0, shape_catalogs.size() - 1))->Clone();
@@ -194,7 +194,7 @@ void Game::OnUpdate() {
     this->FillGridContainerWithShape(*shape);
 
     // use the next shape
-    this->EnrollShapeQueue();
+    this->EnqueueShape();
 
     shape->SetPositionY(0);
     shape->SetPositionX(
@@ -205,7 +205,6 @@ void Game::OnUpdate() {
 
   if (rows_affected > 0) {
     this->scores += rows_affected * this->score_multiplier;
-    this->grid.ShiftDownFloatingRows();
   }
 
   // render
