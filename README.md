@@ -29,9 +29,19 @@ Open http://localhost:8080
 
 ## Build
 
-cmake --preset default
-cmake --build out/build/default
-ctest --test-dir out/build/default
+```bash
+cmake -S . -B build
+cmake --build build
+ctest --test-dir build
+```
+
+## Play the game
+
+After building the project you can just play the game.
+
+```bash
+./build/Tetris
+```
 
 ## TODO
 
