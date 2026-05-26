@@ -12,11 +12,8 @@
 class Game {
  private:
   const float move_interval_seconds = 0.5f;
-  const float auto_score_interval_seconds =
-      5.f;  // auto get score every 5 seconds
 
   float accumulated_time_seconds = 0.f;
-  float accumulated_auto_score_seconds = 0.f;
   float time_played_seconds = 0.f;
   int cell_size_px = 0;
 

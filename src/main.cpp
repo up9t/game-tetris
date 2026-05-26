@@ -20,9 +20,10 @@ int main() {
       .h = 20,
   };
   constexpr int cell_size_px = 40;
+
   constexpr Size window_size = {
-      .w = grid_size.w * cell_size_px,
-      .h = grid_size.h * cell_size_px,
+    .w = grid_size.w * cell_size_px,
+    .h = grid_size.h * cell_size_px,
   };
 
   std::string window_title = "Tetris";

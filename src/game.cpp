@@ -129,13 +129,6 @@ void Game::OnUpdate() {
     shape->SetPositionY(shape->GetPosition().y + 1);
   }
 
-  accumulated_auto_score_seconds += delta_time_seconds;
-  if (accumulated_auto_score_seconds >= auto_score_interval_seconds) {
-    accumulated_auto_score_seconds = 0.f;
-    this->AddScore(this->score_multiplier);
-  }
-  time_played_seconds += delta_time_seconds;
-
   Position placeholder_pos_grid = {
       .x = shape->GetPosition().x,
       .y = shape->GetPosition().y +
