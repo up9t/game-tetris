@@ -15,14 +15,16 @@
 Game* g_game = nullptr;
 
 int main() {
-  constexpr Size window_size = {
-      .w = 400,
-      .h = 800,
-  };
   constexpr Size grid_size = {
-      .w = 20,
-      .h = 40,
+      .w = 10,
+      .h = 20,
   };
+  constexpr int cell_size_px = 40;
+  constexpr Size window_size = {
+      .w = grid_size.w * cell_size_px,
+      .h = grid_size.h * cell_size_px,
+  };
+
   std::string window_title = "Tetris";
 
   InitWindow(window_size.w, window_size.h, window_title.c_str());
@@ -31,7 +33,7 @@ int main() {
 
   constexpr int target_fps = 60;
   const std::unique_ptr<Input> input = std::make_unique<KeyboardInput>();
-  Game game(grid_size, *input);
+  Game game(grid_size, cell_size_px, *input);
 
   g_game = &game;
 

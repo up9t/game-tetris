@@ -18,7 +18,7 @@ class Game {
   float accumulated_time_seconds = 0.f;
   float accumulated_auto_score_seconds = 0.f;
   float time_played_seconds = 0.f;
-  int cell_size_px = 0;
+  int cell_size_px;
 
   int scores = 0;
   const int score_multiplier = 10;

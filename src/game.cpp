@@ -14,8 +14,8 @@
 #include "shapes.hpp"
 #include "size.hpp"
 
-Game::Game(const Size &grid_size, const Input &input)
-    : input{input}, grid(Grid(grid_size.w, grid_size.h)) {
+Game::Game(const Size &grid_size, const int cell_size_px, const Input &input)
+    : input{input}, grid(Grid(grid_size.w, grid_size.h)), cell_size_px(cell_size_px) {
   this->shape_catalogs.push_back(
       std::make_unique<IShape>(0, 0, this->shape_color_rgba));
   this->shape_catalogs.push_back(
@@ -36,8 +36,7 @@ Game::Game(const Size &grid_size, const Input &input)
   shape_queue[1] =
       shape_catalogs.at(GetRandomValue(0, shape_catalogs.size() - 1))->Clone();
 
-  shape_queue.at(0)->SetPositionX(
-      GetRandomValue(spawn_area_range[0], spawn_area_range[1]));
+  shape_queue.at(0)->SetPositionX(grid_size.w / 2);
   shape_queue.at(0)->SetPositionY(0);
 };
 
@@ -197,8 +196,7 @@ void Game::OnUpdate() {
     this->EnqueueShape();
 
     shape->SetPositionY(0);
-    shape->SetPositionX(
-        GetRandomValue(spawn_area_range[0], spawn_area_range[1]));
+    shape->SetPositionX(this->grid.GetWidth() / 2);
   }
 
   const int rows_affected = this->grid.EraseCompletedRows();
