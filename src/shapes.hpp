@@ -58,7 +58,6 @@ class JShape : public Shape {
     this->shape = {
         {0, 1},
         {0, 1},
-        {0, 1},
         {1, 1},
     };
   };
@@ -69,7 +68,6 @@ class LShape : public Shape {
  public:
   LShape(int x, int y, Color color) : Shape(x, y, color) {
     this->shape = {
-        {1, 0},
         {1, 0},
         {1, 0},
         {1, 1},
